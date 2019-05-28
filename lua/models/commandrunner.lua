@@ -77,6 +77,7 @@ end
 TebexCommandRunner.buildCommand = function(cmd, username, id)
     cmd = cmd:gsub("{id}", id);
     cmd = cmd:gsub("{username}", username);
+    cmd = cmd:gsub("{hexid}", "steam:" .. Tebex.getHexSteamId(id));
 
     return cmd .. "\n";
 end
