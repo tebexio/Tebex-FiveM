@@ -4,7 +4,7 @@ TebexCommandRunner = {}
 TebexCommandRunner.deleteAfter = 3
 
 TebexCommandRunner.doOfflineCommands = function()
-    apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
+    apiclient = TebexApiClient:init("https://plugin.tebex.io", config:get("secret"))
     apiclient:get("/queue/offline-commands", function(response)
         commands = response.commands
         exCount = 0
@@ -39,7 +39,7 @@ end
 
 TebexCommandRunner.doOnlineCommands = function(playerPluginId, playerName, playerId)
     Tebex.warn("Running online commands for " .. playerName .. " (" .. playerId .. ")");
-    apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
+    apiclient = TebexApiClient:init("https://plugin.tebex.io", config:get("secret"))
     apiclient:get("/queue/online-commands/" .. playerPluginId, function(response)
         commands = response.commands
         exCount = 0
@@ -90,7 +90,7 @@ TebexCommandRunner.deleteCommands = function(commandIds)
         amp = "&"
     end
 
-    apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
+    apiclient = TebexApiClient:init("https://plugin.tebex.io", config:get("secret"))
     apiclient:delete(endpoint, function(response)
     end, function(body)
         print (body["error_code"] .. " " .. body["error_message"])
