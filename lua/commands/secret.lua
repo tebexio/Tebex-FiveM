@@ -7,7 +7,7 @@ Tebex.commands["secret"] = function(ply, args)
     end
 
     config:set("secret", args[2])
-    apiclient = TebexApiClient:init(config:get("baseUrl"), config:get("secret"))
+    apiclient = TebexApiClient:init("https://plugin.tebex.io", config:get("secret"))
     apiclient:get("/information", function(response)
         TebexInformation.id = response["account"]["id"]
         TebexInformation.domain = response["account"]["domain"]

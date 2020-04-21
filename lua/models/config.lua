@@ -8,8 +8,7 @@ function TebexConfig:init()
         cfg = {
             buyEnabled = false,
             secret = "",
-            buyCommand = "!donate",
-            baseUrl = "https://plugin.tebex.io"
+            buyCommand = "!donate"
         }
     }
 
